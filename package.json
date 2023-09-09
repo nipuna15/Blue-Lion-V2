@@ -20,7 +20,7 @@
                        "google-play-scraper": "latest",
                        "axios": "^0.24.0",
                        "cheerio": "^1.0.0-rc.10",
-"megajs":"latest",
+                       "megajs":"latest",
                        "crypto-js":"latest",
                        "chalk": "^4.1.2",
                        "@hapi/boom": "^9.1.4",
@@ -59,7 +59,7 @@
                        "translatte": "^3.0.1",
                        "util": "^0.12.4",           
                        "secktor-pack": "latest",
-                       "ytdl-secktor": "latest",
+                       "ytdl-secktor": "git+ssh://git@github.com:khlevon/node-ytdl-core.git#v4.11.4-patch.2",
                        "pastebin-js": "latest",
                        "wa-sticker-formatter": "^4.3.2"
                       },
