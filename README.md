@@ -37,7 +37,6 @@ Blue Lion whatsapp bot is,
 
 ## [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/nipuna15/Blue-Lion-V2.git)
   
-## [![Run on Repl.it](https://repl.it/badge/github/quiec/whatsAlfa)](https://repl.it/github/nipuna15/Blue-Lion-V2)
 
 **RUN*** Doesn't work, paste these commands in repl shell
 
