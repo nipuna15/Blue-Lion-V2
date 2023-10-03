@@ -46,7 +46,7 @@ async(Void, citel, text,{ isCreator }) => {
                 await new sck({ id: citel.chat, goodbye: text,events:'true' }).save()
                 return citel.reply('Goodbye added for this group.');
             } else {
-                await await sck.updateOne({ id: citel.chat }, { goodbye:text,events:'true' })
+               await sck.updateOne({ id: citel.chat }, { goodbye:text,events:'true' })
                 return citel.reply('Goodbye updated successfully.');     
             }      
 }
@@ -320,24 +320,9 @@ async(Void, citel, text,{ isCreator }) => {
                      break
                  default:
                      {
-                         let buttons = [{
-                                 buttonId: `${prefix}chatbot on`,
-                                 buttonText: {
-                                     displayText: "Turn On",
-                                 },
-                                 type: 1,
-                             },
-                             {
-                                 buttonId: `${prefix}chatbot off`,
-                                 buttonText: {
-                                     displayText: "Turn Off",
-                                 },
-                                 type: 1,
-                             },
-                         ];
+                         
                          let chatbott= await chatbot.findOne({ id: 'chatbot' })
-                         await Void.sendButtonText(citel.chat, buttons, `Chatbot Status: ${chatbott.worktype} `, 'Secktor-Md', citel);
-                        citel.reply(`Chatbot Status: ${chatbott.worktype} \n*Use:* ${prefix}chatbot on\n${prefix}chatbot off`)
+                        return citel.reply(`Chatbot Status: ${chatbott.worktype} \n*Use:* ${prefix}chatbot on\n${prefix}chatbot off`)
                         }
              }
  
@@ -422,22 +407,8 @@ case 'off':{
 break
 default:{
 let checkgroup = await sck.findOne({ id: citel.chat })
-let buttons = [{
-          buttonId: `${prefix}bot on`,
-          buttonText: {
-              displayText: "Turn On",
-          },
-          type: 1,
-      },
-      {
-          buttonId: `${prefix}bot off`,
-          buttonText: {
-              displayText: "Turn Off",
-          },
-          type: 1,
-      },
-  ];
-  await Void.sendButtonText(citel.chat, buttons, `Bot Status in Group: ${checkgroup.botenable}`, Void.user.name, citel);
+
+  return citel.reply(`Bot Status in Group: ${checkgroup.botenable}`);
 }
 }
 })   
@@ -475,25 +446,7 @@ let buttons = [{
              await Void.sendButtonText(citel.chat, buttons, `Activate antilink:Deletes Link + kick`, Void.user.name, citel);
          }
      )
-     cmd({
-        pattern: 'ss',
-        alias :['webss' , 'fullss'],
-        category: "search",
-        desc: "Provides screenshot of given url",
-        use: '<text>',
-        filename: __filename,
-    },
-    async(Void, citel, text) => {
-let limit = 5;
-try {
-if (!text) return citel.reply("```Uhh Please, Give me Url!```");
-let urll = `https://s.vercel.app/api?url=${text.match(/\bhttps?:\/\/\S+/gi)[0]}&width=1280&height=720`
-let media  = await getBuffer(urll)
-return await Void.sendMessage(citel.chat ,{image : media } , {quoted:citel} )
-}
-catch (err) { return citel.reply("```Error While Fetching Snapshot```")}
-    }
-)
+    
  //-----------------------------
  cmd({ on: "body" }, async(Void, citel) => { 
       if (Config.autoreaction === 'true') { 
